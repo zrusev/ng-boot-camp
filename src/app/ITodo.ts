@@ -1,4 +1,4 @@
 export interface ITodo {
-    name: string,
-    completed: boolean
+    name: string;
+    completed: boolean;
 }

@@ -1,7 +1,6 @@
 # Angular Sofia Boot Camp
 
-WIFI: CampusX
-Password: DigitalCommunity!
+May 12, 2019
 
 ## Workshop Schedule
 
