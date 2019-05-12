@@ -9,6 +9,7 @@ import { ITodo } from '../ITodo';
 export class ListItemComponent implements OnInit {
   @Input() todo: ITodo
   @Output() toggle: EventEmitter<any> = new EventEmitter();
+  @Output() remove: EventEmitter<any> = new EventEmitter();
 
   constructor() { }
 
@@ -19,4 +20,7 @@ export class ListItemComponent implements OnInit {
     this.toggle.emit();
   }
 
+  innerRemover() {
+    this.remove.emit();
+  }
 }

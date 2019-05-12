@@ -3,6 +3,7 @@ import { NgModule } from '@angular/core';
 
 import { AppComponent } from './app.component';
 import { ListItemComponent } from './list-item/list-item.component';
+import { TodoServiceService } from './todo-service.service';
 
 @NgModule({
   declarations: [
@@ -12,7 +13,12 @@ import { ListItemComponent } from './list-item/list-item.component';
   imports: [
     BrowserModule
   ],
-  providers: [],
+  providers: [
+    {
+      provide: TodoServiceService,
+      useClass: TodoServiceService
+    }
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

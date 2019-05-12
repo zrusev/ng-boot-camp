@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { ITodo } from './ITodo';
+import { TodoServiceService } from './todo-service.service';
 
 @Component({
   selector: 'app-root',
@@ -8,16 +9,12 @@ import { ITodo } from './ITodo';
 })
 export class AppComponent {
   title = 'ng-boot-camp';
-  todos: ITodo[] = [
-    { 
-      name: 'some name',
-      completed: false
-    },
-    { 
-      name: 'some second name',
-      completed: false
-    }
-  ];
+
+  todos: ITodo[];
+
+  constructor(public todoService: TodoServiceService) {
+    this.todos = todoService.todos;
+  }
 
   changeTitle(inp: HTMLInputElement) {
     this.title = inp.value;
@@ -25,5 +22,9 @@ export class AppComponent {
 
   toggler(ind: number) {
     this.todos[ind].completed = !this.todos[ind].completed;
+  }
+
+  removeler(idx: number) {
+    this.todos = this.todos.filter((el, index) => index !== idx);
   }
 }
