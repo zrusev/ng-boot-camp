@@ -1,0 +1,9 @@
+<div>
+    <ul *ngIf="todos.length===0; else tmpl">List is empty</ul>
+  </div>
+  
+  <ng-template #tmpl>
+      <ol *ngFor="let todo of todos; let i = index;" [ngClass]="{ 'completed': todo.completed }">
+        <app-list-item [todo]=todo (toggle)="toggler(i)" (remove)="removeler(i)"></app-list-item>
+      </ol>
+  </ng-template>

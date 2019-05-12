@@ -1,21 +1,10 @@
-<!--The content below is only a placeholder and can be replaced.-->
-<div style="text-align:center">
-  <h1>
-    Welcome to {{ title }}!
-  </h1>
-  <img width="300" alt="Angular Logo" src="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAyNTAgMjUwIj4KICAgIDxwYXRoIGZpbGw9IiNERDAwMzEiIGQ9Ik0xMjUgMzBMMzEuOSA2My4ybDE0LjIgMTIzLjFMMTI1IDIzMGw3OC45LTQzLjcgMTQuMi0xMjMuMXoiIC8+CiAgICA8cGF0aCBmaWxsPSIjQzMwMDJGIiBkPSJNMTI1IDMwdjIyLjItLjFWMjMwbDc4LjktNDMuNyAxNC4yLTEyMy4xTDEyNSAzMHoiIC8+CiAgICA8cGF0aCAgZmlsbD0iI0ZGRkZGRiIgZD0iTTEyNSA1Mi4xTDY2LjggMTgyLjZoMjEuN2wxMS43LTI5LjJoNDkuNGwxMS43IDI5LjJIMTgzTDEyNSA1Mi4xem0xNyA4My4zaC0zNGwxNy00MC45IDE3IDQwLjl6IiAvPgogIDwvc3ZnPg==">
-</div>
-
-<input #inp type="text">
-<button type="button" (click)="add()">Add Button</button>
+<ul>
+  <ol>
+    <a routerLink="/list">List</a>
+  </ol>
+  <ol>    
+    <a routerLink="/add">Add</a>
+  </ol>
+</ul>
 <hr />
-
-<div>
-  <ul *ngIf="todos.length===0; else tmpl">List is empty</ul>
-</div>
-
-<ng-template #tmpl>
-    <ol *ngFor="let todo of todos; let i = index;" [ngClass]="{ 'completed': todo.completed }">
-      <app-list-item [todo]=todo (toggle)="toggler(i)" (remove)="removeler(i)"></app-list-item>
-    </ol>
-</ng-template>
+<router-outlet></router-outlet>
