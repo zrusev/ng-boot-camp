@@ -7,8 +7,22 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'ng-boot-camp';
+  todos = [
+    { 
+      name: 'some name',
+      completed: false
+    },
+    { 
+      name: 'some second name',
+      completed: false
+    }
+  ];
 
   changeTitle(inp: HTMLInputElement) {
     this.title = inp.value;
+  }
+
+  toggler(ind: number) {
+    this.todos[ind].completed = !this.todos[ind].completed;
   }
 }
