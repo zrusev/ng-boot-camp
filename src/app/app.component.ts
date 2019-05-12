@@ -1,4 +1,4 @@
-import { Component, OnInit, ViewChild, OnChanges, DoCheck } from '@angular/core';
+import { Component, OnInit, ViewChild, OnChanges, DoCheck, ElementRef } from '@angular/core';
 import { ITodo } from './ITodo';
 import { TodoServiceService } from './todo-service.service';
 
@@ -8,7 +8,7 @@ import { TodoServiceService } from './todo-service.service';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent implements OnInit, DoCheck {  
-  @ViewChild('inp') inp: string;
+  @ViewChild('inp') inp: ElementRef;
   title = 'ng-boot-camp';
   
   todos: ITodo[];
@@ -35,9 +35,8 @@ export class AppComponent implements OnInit, DoCheck {
   }
 
   add() {
-    debugger;
     const todo = {
-      name: this.inp, //TBA: fix to nativeElement
+      name: this.inp.nativeElement.value,
       completed: false
     };
 
