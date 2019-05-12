@@ -1,13 +1,8 @@
-import { Injectable } from '@angular/core';
+import { Injectable, OnInit } from '@angular/core';
 import { ITodo } from './ITodo';
 
-@Injectable({
-  providedIn: 'root'
-})
+@Injectable()
 export class TodoServiceService {
-
-  constructor() { }
-
   todos: ITodo[] = [
     { 
       name: 'some name',
@@ -18,4 +13,18 @@ export class TodoServiceService {
       completed: false
     }
   ];
+
+  constructor() { }
+
+  toggler(ind: number) {
+    this.todos[ind].completed = !this.todos[ind].completed;
+  }
+
+  removeler(idx: number) {
+    this.todos = this.todos.filter((el, index) => index !== idx);
+  }
+
+  add(todo: ITodo) {
+    this.todos = this.todos.concat(todo);
+  }
 }

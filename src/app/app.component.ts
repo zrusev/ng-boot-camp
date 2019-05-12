@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, OnInit, ViewChild, OnChanges, DoCheck } from '@angular/core';
 import { ITodo } from './ITodo';
 import { TodoServiceService } from './todo-service.service';
 
@@ -7,13 +7,19 @@ import { TodoServiceService } from './todo-service.service';
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.css']
 })
-export class AppComponent {
+export class AppComponent implements OnInit, DoCheck {  
+  @ViewChild('inp') inp: string;
   title = 'ng-boot-camp';
-
+  
   todos: ITodo[];
-
-  constructor(public todoService: TodoServiceService) {
-    this.todos = todoService.todos;
+  
+  constructor(public todoService: TodoServiceService) { }
+  
+  ngOnInit() {
+  }
+  
+  ngDoCheck() {
+    this.todos = this.todoService.todos;
   }
 
   changeTitle(inp: HTMLInputElement) {
@@ -21,10 +27,20 @@ export class AppComponent {
   }
 
   toggler(ind: number) {
-    this.todos[ind].completed = !this.todos[ind].completed;
+    this.todoService.toggler(ind);
   }
 
-  removeler(idx: number) {
-    this.todos = this.todos.filter((el, index) => index !== idx);
+  removeler(ind: number) {
+    this.todoService.removeler(ind);
+  }
+
+  add() {
+    debugger;
+    const todo = {
+      name: this.inp, //TBA: fix to nativeElement
+      completed: false
+    };
+
+    this.todoService.add(todo as ITodo);
   }
 }
