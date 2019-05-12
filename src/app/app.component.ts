@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { ITodo } from './ITodo';
 
 @Component({
   selector: 'app-root',
@@ -7,7 +8,7 @@ import { Component } from '@angular/core';
 })
 export class AppComponent {
   title = 'ng-boot-camp';
-  todos = [
+  todos: ITodo[] = [
     { 
       name: 'some name',
       completed: false
